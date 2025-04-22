@@ -1,0 +1,10 @@
+- Product (abstract class)
+    - PhysicalProduct
+    - DigitalProduct
+
+- Customer
+- Cart
+- Order
+- Inventory
+- ProductFactory (Flyweight pattern)
+- Store (main class to tie it together)
