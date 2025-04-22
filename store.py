@@ -47,6 +47,24 @@ class Cart:
             quantity = entry['quantity']
             print(f"{item.name} x{quantity} - ₱{item.price * quantity:.2f}")
 
+    def remove(self, barcode, quantity):
+        for cart_item in self.items:
+            item = cart_item['item']
+            if item.barcode == barcode:
+                if cart_item['quantity'] == quantity:
+                    self.items.remove(cart_item)
+                    print(f"Removed all of {item.name} from cart.")
+                elif cart_item['quantity'] > quantity:
+                    cart_item['quantity'] -= quantity
+                    print(f"Removed {quantity} from {item.name} in cart.")
+                else:
+                    print(f"Cannot remove {quantity}. Only {cart_item['quantity']} in cart.")
+                return
+        print("Item not found in cart.")
+    
+
+                
+
             
             
             
