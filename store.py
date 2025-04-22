@@ -1,32 +1,30 @@
-
 class Store:
-    def __init__(self, name, location, inventory, cart):
+    def __init__(self, name, location, inventory):
         self.name = name
         self.location = location
         self.inventory = inventory
-        self.cart = cart
         
-    def add_product(self,product):
+    def add_product(self, product):
         return self.inventory.add_item(product)
     
     def show_products(self):
         return self.inventory.show_items()
     
-    def process_add_cart(self, barcode, quantity):
+    def process_add_cart(self, customer, barcode, quantity):
         item = self.inventory.find_item(barcode)
         if item and item.quantity >= quantity:
-            self.cart.add(item, quantity)
+            customer.add_to_cart(item, quantity)
             self.inventory.update_stock(barcode, -quantity)
-            return f"Item {item.name} Quantity : {quantity} added to cart! "
+            return f"{item.name} x{quantity} added to {customer.name}'s cart!"
         else:
             return "Product Not Available"
-            
+    
     def find_item_inventory(self, barcode):
         item = self.inventory.find_item(barcode)
         if item:
-            return f"Item {item.name} Exist!"
-        else:
-            return f"Item does'nt Exist!"
+            return f"{item.name} exists!"
+        return "Item doesn't exist!"
+
             
 
 class Cart:
@@ -61,7 +59,7 @@ class Cart:
                     print(f"Cannot remove {quantity}. Only {cart_item['quantity']} in cart.")
                 return
         print("Item not found in cart.")
-    
+
 
                 
 
