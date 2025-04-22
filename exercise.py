@@ -47,6 +47,14 @@ class Library:
     def add_item(self, item):
         self.items.append(item)
         
+    def remove_item(self, barcode):
+        for item in self.items:
+            if barcode == item.barcode:  
+                self.items.remove(item) 
+            else:
+                return "Item doesnt exist"     
+
+
     def display(self):
         for item in self.items:
             print(item.get_details())
@@ -62,6 +70,8 @@ class Student:
         self.borrowed_items = []
         
 
+        
+
     
 
     
@@ -69,9 +79,10 @@ class Student:
 if __name__ == "__main__":
     student1 = Student("Eric", 789)
     library = Library("Library Store", "Bagong Bariio", "Eric")
-    
+     
     b1 = Book("Nothing", 234, "xander")
     m1 = Magazine("Club", 345, "Hand", "Style")
     
     library.add_item(b1)
+    print(library.remove_item(234))
     library.display()
