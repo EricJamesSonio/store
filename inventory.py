@@ -14,7 +14,7 @@ class Inventory:
             
     def show_items(self):
         if not self.items:
-            f"Empty Inventory!"
+            return f"Empty Inventory!"
         else:
             for item in self.items:
                 print(" - ", item.get_details())
