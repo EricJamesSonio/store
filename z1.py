@@ -40,6 +40,21 @@ class Student:
         
     def __repr__(self):
         return f"Name : {self.name}, Id : {self.student_id}"
+    
+    def register(self, course : Course):
+        if course in self.registered_course:
+            print("Course Already Exist")
+        else:
+            self.registered_course.append(course)
+            
+    def get_course(self, id):
+        for course in self.registered_course:
+            if id == course.course_id:
+                return course
+        return None
+            
+        
+        
         
         
     
@@ -63,6 +78,14 @@ class University:
             
         return "Student Does'nt Exist"
     
+    def find_course(self, id):
+        for cor in self.course:
+            if id == cor.course_id:
+                print("Found Course!", cor.get_details())
+                return cor
+            
+
     
+
         
          
